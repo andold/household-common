@@ -3,6 +3,9 @@ package kr.andold.household.entity;
 import java.net.URLDecoder;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -258,6 +261,24 @@ public class Statement {
 		}
 
 		return 0;
+	}
+
+	public static Map<Integer, Statement> makeMap(List<Statement> list) {
+		Map<Integer, Statement> map = new HashMap<Integer, Statement>();
+		if (list == null) {
+			return map;
+		}
+
+		for (int cx = 0, sizex = list.size(); cx < sizex; cx++) {
+			Statement statement = list.get(cx);
+			if (statement == null) {
+				continue;
+			}
+
+			map.put(statement.getId(), statement);
+		}
+
+		return map;
 	}
 
 }

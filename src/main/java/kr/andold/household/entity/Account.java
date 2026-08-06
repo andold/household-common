@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import jakarta.annotation.Nullable;
@@ -203,6 +205,24 @@ public class Account {
 		}
 
 		return null;
+	}
+
+	public static Map<Integer, Account> makeMap(List<Account> listAccount) {
+		Map<Integer, Account> map = new HashMap<Integer, Account>();
+		if (listAccount == null) {
+			return map;
+		}
+
+		for (int cx = 0, sizex = listAccount.size(); cx < sizex; cx++) {
+			Account account = listAccount.get(cx);
+			if (account == null) {
+				continue;
+			}
+
+			map.put(account.getId(), account);
+		}
+
+		return map;
 	}
 
 }

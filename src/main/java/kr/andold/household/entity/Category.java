@@ -2,6 +2,9 @@ package kr.andold.household.entity;
 
 import java.net.URLDecoder;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -83,6 +86,24 @@ public class Category {
 		}
 
 		return null;
+	}
+
+	public static Map<Integer, Category> makeMap(List<Category> list) {
+		Map<Integer, Category> map = new HashMap<Integer, Category>();
+		if (list == null) {
+			return map;
+		}
+
+		for (int cx = 0, sizex = list.size(); cx < sizex; cx++) {
+			Category category = list.get(cx);
+			if (category == null) {
+				continue;
+			}
+
+			map.put(category.getId(), category);
+		}
+
+		return map;
 	}
 
 }
