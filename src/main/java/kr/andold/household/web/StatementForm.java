@@ -1,5 +1,6 @@
 package kr.andold.household.web;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StatementForm extends Statement {
+	public static final StatementForm STATEMENT = new StatementForm();
+	public static final List<StatementForm> LIST_STATEMENT = new ArrayList<StatementForm>();
+
 	@Getter @Setter private String keyword;
 	@Getter @Setter private Long from;		//	start time
 	@Getter @Setter private Long to;		//	end time
