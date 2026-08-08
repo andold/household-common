@@ -1,6 +1,6 @@
 package kr.andold.household.web;
 
-import kr.andold.household.entity.Account;
+import kr.andold.household.domain.Account;
 import kr.andold.utils.Utility;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +13,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountForm extends Account {
+	public static final AccountForm ACCOUNT = new AccountForm();
+
 	//	extra
 	@Builder.Default @Getter @Setter private boolean closed = false;
 	@Builder.Default @Getter @Setter private boolean zero = false;
