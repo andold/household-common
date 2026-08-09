@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import kr.andold.household.service.parser.HouseholdV2ParserService;
+import kr.andold.household.service.parser.HouseholdParserService;
 import kr.andold.household.web.StatementForm;
 import kr.andold.utils.Utility;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,7 @@ public class ShinhanInvestTest {
 	//	신한투자증권 > 나의 자산분석 > 거래내역 > 종합거래내역 > 한화면조회::종합거래내역
 	@Test
 	public void testShinhanInvestSummaryTradeHistory20260115() throws Exception {
-		HouseholdV2ParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary-20260115.html", "신한투자");
+		HouseholdParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary-20260115.html", "신한투자");
 		assertEquals(3, LIST_STATEMENT.size());
 	}
 
@@ -37,28 +37,28 @@ public class ShinhanInvestTest {
 	//	신한투자증권 > 나의 자산분석 > 거래내역 > 입출금(고)내역
 	@Test
 	public void testShinhanInvestCma20250408WithHint() throws Exception {
-		HouseholdV2ParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary-20250408.html", "신한투자");
+		HouseholdParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary-20250408.html", "신한투자");
 		assertEquals(2, LIST_STATEMENT.size());
 	}
 
 	//	신한투자증권 > 나의 자산분석 > 거래내역 > 입출금(고)내역 > 한화면조회::종합거래내역
 	@Test
 	public void testShinhanInvestSummaryTradeHistoryWithHint() throws Exception {
-		HouseholdV2ParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary.html", "신한투자");
+		HouseholdParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary.html", "신한투자");
 		assertEquals(160, LIST_STATEMENT.size());
 	}
 
 	//	신한투자증권 > 나의 자산분석 > 거래내역 > 입출금(고)내역 > 한화면조회::종합거래내역
 	@Test
 	public void testShinhanInvestSummaryTradeHistory() throws Exception {
-		HouseholdV2ParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary.html");
+		HouseholdParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-TradeSummary.html");
 		assertEquals(160, LIST_STATEMENT.size());
 	}
 
 	//	신한투자증권 > 나의 자산분석 > 거래내역 > 입출금(고)내역
 	@Test
 	public void testShinhanInvestCma() throws Exception {
-		HouseholdV2ParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-CMA.html");
+		HouseholdParserService.testHtmlFile("samples-ShinhanInvest/ShinhanInvest-CMA.html");
 		assertEquals(17, LIST_STATEMENT.size());
 	}
 

@@ -13,7 +13,7 @@ import kr.andold.utils.Utility;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ShinhanCardParserTest {
+public class EtcTest {
 	private static final List<StatementForm> LIST_STATEMENT = kr.andold.household.web.StatementForm.LIST_STATEMENT;
 
 	@BeforeEach
@@ -22,10 +22,17 @@ public class ShinhanCardParserTest {
 		LIST_STATEMENT.clear();
 	}
 
+	// 하이패스-자동충전카드.html
 	@Test
-	public void testTrafficBus() {
-		HouseholdParserService.testHtmlFile("samples-ShinhanCard/ShinhanCard-Bus.html");
-		assertEquals(16, LIST_STATEMENT.size());
+	public void testHiPass() throws Exception {
+		HouseholdParserService.testHtmlFile("samples-etc/Hipass-AutoChargeCard.html");
+		assertEquals(25, LIST_STATEMENT.size());
+	}
+
+	@Test
+	public void testNetree20231107() throws Exception {
+		HouseholdParserService.testHtmlFile("samples-etc/Nextree-Payslip-20231107.html");
+		assertEquals(12, LIST_STATEMENT.size());
 	}
 
 }

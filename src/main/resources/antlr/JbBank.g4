@@ -2,7 +2,7 @@
  * 전북은행 문법
  */
 grammar JbBank;
-import	CommonV2;
+import	Common;
 
 @header {
 import java.util.Calendar;

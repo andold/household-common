@@ -3,7 +3,7 @@
  */
 grammar SamsungInsure;
 
-import	CommonV2;
+import	Common;
 
 @header {
 import java.util.Calendar;

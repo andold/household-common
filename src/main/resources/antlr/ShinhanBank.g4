@@ -2,7 +2,7 @@
  * 신한은행
  */
 grammar ShinhanBank;
-import	CommonV2;
+import	Common;
 
 @header {
 import java.util.Calendar;

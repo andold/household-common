@@ -13,8 +13,8 @@ import kr.andold.utils.Utility;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class JbBankParserTest {
-	private static final List<StatementForm> LIST_STATEMENT = kr.andold.household.web.StatementForm.LIST_STATEMENT;
+public class SamsungTest {
+	private List<StatementForm> LIST_STATEMENT = kr.andold.household.web.StatementForm.LIST_STATEMENT;
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -23,20 +23,17 @@ public class JbBankParserTest {
 	}
 
 	@Test
-	public void testJBFixed() throws Exception {
-		HouseholdParserService.testExcelFile("samples-JbBank/JbBank-FixedDeposit.xls");
+	public void testSamsungInsure20250628() throws Exception {
+		HouseholdParserService.testHtmlFile("samples-SamsungInsure/SamsungInsure-ContractDetail-20250628.html", "삼성생명");
 		assertEquals(1, LIST_STATEMENT.size());
 	}
 
+	/**
+	 * 삼성생명 > 나의계약 > 계약조회 > 상세보기
+	 */
 	@Test
-	public void testOrdinaryAccount() {
-		HouseholdParserService.testHtmlFile("samples-JbBank/JbBank-OrdinaryAccount.html", "전북은행");
-		assertEquals(2, LIST_STATEMENT.size());
-	}
-
-	@Test
-	public void testFixedDeposit() {
-		HouseholdParserService.testExcelFile("samples-JbBank/JbBank-FixedDeposit.xls", "전북은행");
+	public void testSamsungInsure() throws Exception {
+		HouseholdParserService.testHtmlFile("samples-SamsungInsure/SamsungInsure-ContractDetail.html", "삼성생명");
 		assertEquals(1, LIST_STATEMENT.size());
 	}
 

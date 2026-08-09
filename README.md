@@ -10,7 +10,7 @@
 - `kr.andold.household.domain` — 파싱 결과/enum 등 보조 도메인 클래스: `AccountParsed`, `AccountType`, `MultipleDateEditor`, `ParserResult`, `Result`, `StatementParsed`, `StatsTitleDataResponse`
 - `kr.andold.household.web` — 요청/응답 DTO: `AccountForm`, `CategoryForm`, `HouseholdParam`, `StatementForm`, `StatementSearchRequest`, `StatsTitleDataForm`
 - `kr.andold.household.antlr` — 은행/카드/증권/영수증 명세서 파싱용 ANTLR4 생성 Lexer/Parser/Listener/Visitor (문법 소스는 `src/main/resources/antlr/*.g4`)
-- `kr.andold.household.service.parser` — `HouseholdV2ParserService`(producer 문자열 기준 ANTLR lexer/parser 디스패치), `HtmlParserService`(Jsoup 기반 HTML → 텍스트 추출)
+- `kr.andold.household.service.parser` — `HouseholdParserService`(producer 문자열 기준 ANTLR lexer/parser 디스패치), `HtmlParserService`(Jsoup 기반 HTML → 텍스트 추출)
 
 ## ANTLR 파서 재생성
 
@@ -20,7 +20,7 @@
 
 ## 테스트
 
-ANTLR 파서/`HouseholdV2ParserService`/`HtmlParserService`에 대한 테스트는 `src/test/java/kr/andold/household/antlr/` 아래에 있으며, 픽스처(은행/카드/증권/영수증 샘플 HTML/텍스트/엑셀 파일)는 `src/test/resources/samples-*/`에 있다. `mvn test`로 실행한다. 새 소스 포맷을 추가할 때는 이 저장소에 문법(`.g4`) + 픽스처 + 테스트 클래스를 함께 추가한다.
+ANTLR 파서/`HouseholdParserService`/`HtmlParserService`에 대한 테스트는 `src/test/java/kr/andold/household/antlr/` 아래에 있으며, 픽스처(은행/카드/증권/영수증 샘플 HTML/텍스트/엑셀 파일)는 `src/test/resources/samples-*/`에 있다. `mvn test`로 실행한다. 새 소스 포맷을 추가할 때는 이 저장소에 문법(`.g4`) + 픽스처 + 테스트 클래스를 함께 추가한다.
 
 ## 빌드 / 발행
 

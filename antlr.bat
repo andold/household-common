@@ -11,14 +11,14 @@ TIME /T
 DEL /Q %OUTPUT_DIR%\*
 
 
-java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\HouseholdV2.g4
-java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\NaverV2.g4
+java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\Household.g4
+java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\Naver.g4
 java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\KoreaInvest.g4
 java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\ShinhanInvest.g4
 java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\ShinhanCard.g4
-java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\HanaV2.g4
-java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\ReceiptV2.g4
-java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\KdbV2.g4
+java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\Hana.g4
+java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\Receipt.g4
+java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\Kdb.g4
 java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\ShinhanBank.g4
 java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\SamsungInsure.g4
 java -jar %FILE_NAME_ANTLR_JAR% -encoding UTF8 -package %PACKAGE_ANTLR4% -visitor -o %OUTPUT_DIR% %INPUT_DIR%\JbBank.g4
