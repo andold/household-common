@@ -30,4 +30,35 @@ mvn install      # 로컬 .m2 저장소에 설치
 mvn deploy       # GitHub Packages(andold/household-common)에 발행 — deploy.bat / deploy.sh 참고
 ```
 
-GitHub Packages 인증은 `~/.m2/settings.xml`의 `github` 서버 설정을 사용한다.
+`pom.xml`에는 `kr.andold:utils` 의존성을 resolve할 저장소가 선언되어 있지 않다 — 대신 `~/.m2/settings.xml`에 `github` 저장소(`https://maven.pkg.github.com/andold/utils`)를 추가하는 프로파일을 활성화해두어야 한다. GitHub Packages는 읽기(dependency resolve)에도 인증이 필요하므로, 같은 `~/.m2/settings.xml`에 `github` 서버 자격증명(GitHub 사용자명 + PAT)도 함께 설정해야 한다 — 이 자격증명은 `household-common` 자체를 GitHub Packages(andold/household-common)에 발행(`mvn deploy`)할 때도 그대로 재사용된다. 이 값이 없으면 빌드가 `kr.andold:utils` 의존성 resolve에 실패한다. 예시:
+
+```xml
+<settings>
+	<activeProfiles>
+		<activeProfile>github</activeProfile>
+	</activeProfiles>
+	<profiles>
+		<profile>
+			<id>github</id>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<url>https://repo1.maven.org/maven2</url>
+				</repository>
+				<repository>
+					<id>github</id>
+					<url>https://maven.pkg.github.com/andold/utils</url>
+					<snapshots><enabled>true</enabled></snapshots>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+	<servers>
+		<server>
+			<id>github</id>
+			<username>{GITHUB_USERNAME}</username>
+			<password>{GITHUB_PAT}</password>
+		</server>
+	</servers>
+</settings>
+```
