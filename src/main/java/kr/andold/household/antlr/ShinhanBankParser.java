@@ -652,6 +652,7 @@ public class ShinhanBankParser extends Parser {
 				statement.setIncome((((ShinhanGeneralDepositeHtmlItemContext)_localctx).income!=null?((ShinhanGeneralDepositeHtmlItemContext)_localctx).income.getText():null));
 				statement.setOutcome((((ShinhanGeneralDepositeHtmlItemContext)_localctx).outcome!=null?((ShinhanGeneralDepositeHtmlItemContext)_localctx).outcome.getText():null));
 				statement.setBalance((((ShinhanGeneralDepositeHtmlItemContext)_localctx).balance!=null?((ShinhanGeneralDepositeHtmlItemContext)_localctx).balance.getText():null));
+				statement.setCategoryName("분류.지출.생활용품.기타");
 
 			}
 		}
@@ -1741,6 +1742,7 @@ public class ShinhanBankParser extends Parser {
 				statement.setIncome((((ShinhanFundItemContext)_localctx).amount!=null?((ShinhanFundItemContext)_localctx).amount.getText():null));
 				statement.setOutcome(0);
 				statement.setBalance((((ShinhanFundItemContext)_localctx).balance!=null?((ShinhanFundItemContext)_localctx).balance.getText():null));
+				statement.setCategoryName("분류.지출.생활용품.기타");
 
 			}
 		}
@@ -2094,6 +2096,7 @@ public class ShinhanBankParser extends Parser {
 				statement.setIncome((((ShinhanGeneralDepositeItemContext)_localctx).income!=null?((ShinhanGeneralDepositeItemContext)_localctx).income.getText():null));
 				statement.setOutcome((((ShinhanGeneralDepositeItemContext)_localctx).outcome!=null?((ShinhanGeneralDepositeItemContext)_localctx).outcome.getText():null));
 				statement.setBalance((((ShinhanGeneralDepositeItemContext)_localctx).balance!=null?((ShinhanGeneralDepositeItemContext)_localctx).balance.getText():null));
+				statement.setCategoryName("분류.지출.생활용품.기타");
 
 			}
 		}
@@ -2409,6 +2412,7 @@ public class ShinhanBankParser extends Parser {
 					statement.setIncome((((ShinhanFixedDepositeItemContext)_localctx).profit!=null?((ShinhanFixedDepositeItemContext)_localctx).profit.getText():null));
 					statement.setOutcome(0);
 					statement.setBalance((((ShinhanFixedDepositeItemContext)_localctx).balance!=null?((ShinhanFixedDepositeItemContext)_localctx).balance.getText():null));
+					statement.setCategoryName("분류.수입.부수입.이자/배당금");
 				}
 
 			}

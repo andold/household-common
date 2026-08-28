@@ -23,6 +23,13 @@ public class HouseholdParserTest {
 		LIST_STATEMENT.clear();
 	}
 
+	//	신한은행 일반예금
+	@Test
+	public void testShinhanBank() throws Exception {
+		HouseholdParserService.testHtmlFile("samples-ShinhanBank/ShinhanBank-OrdinaryAccount.html", "신한은행");
+		assertEquals(47, LIST_STATEMENT.size());
+	}
+
 	//	계좌번호가 여러단어인 경우
 	@Test
 	public void testStandard20251110() throws Exception {

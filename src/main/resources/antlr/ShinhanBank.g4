@@ -85,6 +85,7 @@ shinhanGeneralDepositeHtmlItem:
 	statement.setIncome($income.text);
 	statement.setOutcome($outcome.text);
 	statement.setBalance($balance.text);
+	statement.setCategoryName("분류.지출.생활용품.기타");
 };
 
 
@@ -221,6 +222,7 @@ shinhanFundItem:
 	statement.setIncome($amount.text);
 	statement.setOutcome(0);
 	statement.setBalance($balance.text);
+	statement.setCategoryName("분류.지출.생활용품.기타");
 };
 
 
@@ -254,6 +256,7 @@ DATE TAB TIME TAB type=word* TAB outcome=NUMBER? TAB income=NUMBER? TAB title1=w
 	statement.setIncome($income.text);
 	statement.setOutcome($outcome.text);
 	statement.setBalance($balance.text);
+	statement.setCategoryName("분류.지출.생활용품.기타");
 };
 
 
@@ -297,6 +300,7 @@ shinhanFixedDepositeItem:
 		statement.setIncome($profit.text);
 		statement.setOutcome(0);
 		statement.setBalance($balance.text);
+		statement.setCategoryName("분류.수입.부수입.이자/배당금");
 	}
 };
 
