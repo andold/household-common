@@ -554,9 +554,10 @@ receiptDureSupplyHistoryDetail:
 	statement.setCategoryName("분류.수입.전월이월.이체");
 };
 receiptDureSupplyHistoryDetailItem:
+(
 	title=word title1=word? title2=word? title3=word? title4=word? title5=word? title6=word? title7=word*
 		WORD unit=NUMBER WORD+ ea=NUMBER WORD+ amount=NUMBER WORD+		NEWLINE
-				//	삶은찰옥수수(3입/냉동) 단가 5,900 원 · 수량 2 개 11,800 원 
+				//	삶은찰옥수수(3입/냉동) 단가 5,900 원 · 수량 2 개 11,800 원
 {
 	log.info("{} 영수증::두레생협 구매 내역(『{} {} {} {} {} {} {}』『{} {} {}』)", Utility.indentMiddle()
 		, $title.text, $title1.text, $title2.text, $title3.text, $title4.text, $title5.text, $title6.text, $title7.text
@@ -568,7 +569,27 @@ receiptDureSupplyHistoryDetailItem:
 	statement.setOutcome($amount.text);
 	statement.setDescription($unit.text, "x", $ea.text);
 	statement.setCategoryName("분류.지출.식비.주식");
-};
+}
+)
+|
+(
+	//	가격 없는 사은품(증정) - "증정"이라는 단어로만 끝나야 한다(결제 정보/생활재주문금액 등 다음 줄과 섞이지 않도록)
+	title=word title1=word? title2=word? title3=word? title4=word? title5=word? title6=word? title7=word*
+		gift=WORD {"증정".equals($gift.text)}?		NEWLINE
+				//	구운유정란(10입) 증정
+{
+	log.info("{} 영수증::두레생협 구매 내역 - 증정(『{} {} {} {} {} {} {}』)", Utility.indentMiddle()
+		, $title.text, $title1.text, $title2.text, $title3.text, $title4.text, $title5.text, $title6.text, $title7.text
+	);
+	StatementForm statement = new StatementForm();
+	LIST_STATEMENT.add(statement);
+	statement.setTitle($title.text, $title1.text, $title2.text, $title3.text, $title4.text, $title5.text, $title6.text, $title7.text);
+	statement.setOutcome(0);
+	statement.setDescription($gift.text);
+	statement.setCategoryName("분류.지출.식비.주식");
+}
+)
+;
 
 
 //	두레생협 홈페이지 > 마이두레 > 장보기 > 주문내역 > 주문 상세보기

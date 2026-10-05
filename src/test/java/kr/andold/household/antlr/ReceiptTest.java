@@ -67,6 +67,12 @@ public class ReceiptTest {
 		HouseholdParserService.testHtmlFile("samples-Receipt/Receipt-Dure-SupplyHistoryDetail-20260731.html", "영수증");
 		assertEquals(6, LIST_STATEMENT.size());
 	}
+	//	#86 구문분석 불가 - 사이트 개편 후(2026-10) 샘플, 가격 없는 사은품(증정) 품목 포함
+	@Test
+	public void testSupplyHistoryDetailhtml20261005() throws Exception {
+		HouseholdParserService.testHtmlFile("samples-Receipt/Receipt-Dure-SupplyHistoryDetail-20261005.html", "영수증");
+		assertEquals(7, LIST_STATEMENT.size());	//	주문 1 + 가격 품목 5 + 증정 품목 1
+	}
 	@Test
 	public void testECoopSupplyDetailhtml() throws Exception {
 		HouseholdParserService.testHtmlFile("samples-Receipt/Receipt-ECoop-SupplyDetail.html");
