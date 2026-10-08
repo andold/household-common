@@ -315,26 +315,41 @@ naverNaverPayCancelPurchase:
 	WORD TAB								NEWLINE		//	취소상품 	 
 
 	(
-		TAB										NEWLINE		//		 
-		TAB										NEWLINE		//		 
-		TAB title=word title1=word? title2=word? title3=word? title4=word? title5=word? title6=word? title7=word* TAB				NEWLINE
-				//		 완도 활 전복 1kg 45 25 15미 12 8미 활꼬마전복 산소포장 	 
-		WORD WORD option=word option1=word? option2=word? option3=word? option4=word? option5=word? option6=word? option7=word* TAB	NEWLINE
-				//	옵션 : 명품수산물: 전복1K(15미) 	 
-		TAB												NEWLINE		//		 
-		TAB												NEWLINE		//		 
-		WORD TAB price=NUMBER WORD TAB					NEWLINE		//	주문금액 	 26,900 원 	 
-		WORD TAB ea=NUMBER TAB							NEWLINE		//	수량 	 1 	 
+		{	//	반복마다 이전 상품의 라벨 값이 남지 않도록 초기화
+			_localctx.prefix = null;
+			_localctx.title = null; _localctx.title1 = null; _localctx.title2 = null; _localctx.title3 = null; _localctx.title4 = null; _localctx.title5 = null; _localctx.title6 = null; _localctx.title7 = null;
+			_localctx.option = null; _localctx.option1 = null; _localctx.option2 = null; _localctx.option3 = null; _localctx.option4 = null; _localctx.option5 = null; _localctx.option6 = null; _localctx.option7 = null;
+			_localctx.seller = null; _localctx.seller1 = null; _localctx.seller2 = null; _localctx.seller3 = null; _localctx.seller4 = null; _localctx.seller5 = null; _localctx.seller6 = null; _localctx.seller7 = null;
+		}
+		TAB										NEWLINE		//
+		TAB										NEWLINE		//
 		(
-			dname=WORD TAB dfee=WORD WORD WORD+ TAB		NEWLINE		//	배송비 	 3,500원(택배,등기,소포 / 선결제) 	 
+			TAB title=word title1=word? title2=word? title3=word? title4=word? title5=word? title6=word? title7=word* TAB				NEWLINE
+					//		 완도 활 전복 1kg 45 25 15미 12 8미 활꼬마전복 산소포장
+			WORD WORD option=word option1=word? option2=word? option3=word? option4=word? option5=word? option6=word? option7=word* TAB	NEWLINE
+					//	옵션 : 명품수산물: 전복1K(15미)
+			TAB												NEWLINE		//
+			TAB												NEWLINE		//
+		|
+			prefix=WORD TAB title=word title1=word? title2=word? title3=word? title4=word? title5=word? title6=word? title7=word* TAB	NEWLINE
+					//	추가상품 	 스포츠루프
+		)
+		WORD TAB price=NUMBER WORD TAB					NEWLINE		//	주문금액 	 26,900 원
+		WORD TAB ea=NUMBER TAB							NEWLINE		//	수량 	 1
+		(
+			dname=WORD TAB dfee=WORD WORD* TAB			NEWLINE
+					//	배송비 	 3,500원(택배,등기,소포 / 선결제)
+					//	배송비 	 무료(택배,등기,소포)
 			{
 				log.info("{} 구매취소물품(『{} {}』)", Utility.indentMiddle(), $dname.text, $dfee.text);
 
-				StatementForm statement = new StatementForm();
-				LIST_STATEMENT.add(statement);
-				statement.setTitle("[구매취소]", $dname.text);
-				statement.setIncome($dfee.text.replaceAll("\\(.*", ""));
-				statement.setCategoryName("분류.지출.생활용품.주방/욕실");
+				if ($dfee.text.matches("^[0-9].*")) {
+					StatementForm statement = new StatementForm();
+					LIST_STATEMENT.add(statement);
+					statement.setTitle("[구매취소]", $dname.text);
+					statement.setIncome($dfee.text.replaceAll("\\(.*", ""));
+					statement.setCategoryName("분류.지출.생활용품.주방/욕실");
+				}
 			}
 		)?
 		seller=word seller1=word? seller2=word? seller3=word? seller4=word? seller5=word? seller6=word? seller7=word* TAB		NEWLINE
@@ -349,7 +364,7 @@ naverNaverPayCancelPurchase:
 
 			StatementForm statement = new StatementForm();
 			LIST_STATEMENT.add(statement);
-			statement.setTitle("[구매취소]", $title.text, $title1.text, $title2.text, $title3.text, $title4.text, $title5.text, $title6.text, $title7.text);
+			statement.setTitle("[구매취소]", $prefix.text, $title.text, $title1.text, $title2.text, $title3.text, $title4.text, $title5.text, $title6.text, $title7.text);
 			statement.setDescription($option.text, $option1.text, $option2.text, $option3.text, $option4.text, $option5.text, $option6.text, $option7.text
 				, "-", $seller.text, $seller1.text, $seller2.text, $seller3.text, $seller4.text, $seller5.text, $seller6.text, $seller7.text
 			);

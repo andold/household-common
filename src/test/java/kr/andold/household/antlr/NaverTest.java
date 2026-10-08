@@ -35,6 +35,15 @@ public class NaverTest {
 	}
 
 	@Test
+	public void testNaverMailNaverPayCancelPurchaseMultipleProduct20261008() throws Exception {
+		HouseholdParserService.testHtmlFile("samples-Naver/Naver-Mail-NaverPay-CancelPurchaseMultipleProduct-20261008.html", "네이버");
+		assertEquals(6, LIST_STATEMENT.size());
+		assertEquals("[구매취소] 추가상품 스포츠루프", LIST_STATEMENT.get(3).getTitle());
+		assertEquals("[구매취소] 추가상품 41mm(Series 7-9)", LIST_STATEMENT.get(4).getTitle());
+		assertEquals(28700, LIST_STATEMENT.get(5).getOutcome());
+	}
+
+	@Test
 	public void testNaverPayMoneyCoardText() throws Exception {
 		HouseholdParserService.testTextFile("samples-Naver/NaverPay-MoneyCard.txt", "기본");
 		assertEquals(4, LIST_STATEMENT.size());
